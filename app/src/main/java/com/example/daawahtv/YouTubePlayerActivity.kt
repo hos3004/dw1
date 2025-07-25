@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.webkit.JavascriptInterface
 import android.widget.Toast
 import com.example.daawahtv.PlaybackPositionManager
-import com.example.daawahtv.network.ApiClientTv
+import com.example.daawahtv.network.ApiClient
 import com.example.daawahtv.network.EpisodeDetailsResponse
 import java.util.regex.Pattern
 
@@ -125,7 +125,7 @@ class YouTubePlayerActivity : AppCompatActivity() {
         PlaybackPositionManager.savePosition(this, currentEpisodeId, 0)
         currentEpisodeId = nextId
         Toast.makeText(this, "تشغيل الحلقة التالية...", Toast.LENGTH_SHORT).show()
-        ApiClientTv.tvShowApiService.getEpisodeDetails(nextId.toInt())
+        ApiClient.getTvShowApiService().getEpisodeDetails(nextId.toInt())
             .enqueue(object : retrofit2.Callback<EpisodeDetailsResponse> {
                 override fun onResponse(
                     call: retrofit2.Call<EpisodeDetailsResponse>,

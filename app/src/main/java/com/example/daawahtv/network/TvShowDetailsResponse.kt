@@ -35,12 +35,3 @@ data class Seasons(
 data class Season(
     val id: Int,
     val name: String
-)
-data class EpisodeDetailsApiResponse(
-    val status: Boolean,
-    val data: EpisodeData
-)
-
-data class EpisodeData(
-    val url_link: String
-)

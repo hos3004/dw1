@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:layout_margin="8dp"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <!-- ImageView لعرض صورة البانر -->
+    <ImageView
+        android:id="@+id/bannerImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/banner_image_description" /> <!-- أضف وصف المحتوى -->
+
+    <!-- TextView لعرض عنوان البانر في الأسفل -->
+    <TextView
+        android:id="@+id/bannerTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#80000000"
+    android:padding="8dp"
+    android:textColor="@android:color/white"
+    android:textSize="18sp"
+    android:textStyle="bold"
+    android:maxLines="1"
+    android:ellipsize="end" />
+
+</FrameLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:padding="8dp">
+
+    <!-- ImageView لعرض صورة البرنامج -->
+    <ImageView
+        android:id="@+id/programImageView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/program_image_description" /> <!-- أضف وصف المحتوى -->
+
+    <!-- TextView لعرض عنوان البرنامج -->
+    <TextView
+        android:id="@+id/programTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:maxLines="2"
+        android:ellipsize="end" />
+
+</LinearLayout>

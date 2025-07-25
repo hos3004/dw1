@@ -69,7 +69,7 @@ class TvShowDetailsActivity : AppCompatActivity() {
 
     private fun loadTvShowDetails(programId: Long) {
         Toast.makeText(this, "جاري تحميل التفاصيل...", Toast.LENGTH_SHORT).show()
-        ApiClientTv.tvShowApiService.getTvShowDetails(programId).enqueue(object : Callback<TvShowDetailsResponse> {
+        ApiClient.getTvShowApiService().getTvShowDetails(programId).enqueue(object : Callback<TvShowDetailsResponse> {
             override fun onResponse(call: Call<TvShowDetailsResponse>, response: Response<TvShowDetailsResponse>) {
                 if (response.isSuccessful && response.body()?.status == true) {
                     val details = response.body()!!.data.details
@@ -100,7 +100,7 @@ class TvShowDetailsActivity : AppCompatActivity() {
         val limit = 100
         Log.d("Episodes", "Requesting episodes offset=$offset, limit=$limit")
         Toast.makeText(this, "جاري تحميل الحلقات...", Toast.LENGTH_SHORT).show()
-        ApiClientTv.tvShowApiService.getSeasonEpisodes(programId, seasonIndex, limit, offset)
+        ApiClient.getTvShowApiService().getSeasonEpisodes(programId, seasonIndex, limit, offset)
             .enqueue(object : Callback<SeasonResponse> {
             override fun onResponse(call: Call<SeasonResponse>, response: Response<SeasonResponse>) {
                 if (response.isSuccessful && response.body()?.status == true) {
@@ -128,7 +128,7 @@ class TvShowDetailsActivity : AppCompatActivity() {
 
     private fun loadVideoUrlForEpisode(episodeId: Long, position: Int) {
         Toast.makeText(this, "جاري تحميل الحلقة...", Toast.LENGTH_SHORT).show()
-        ApiClientTv.tvShowApiService.getEpisodeDetails(episodeId.toInt())
+        ApiClient.getTvShowApiService().getEpisodeDetails(episodeId.toInt())
             .enqueue(object : Callback<EpisodeDetailsResponse> {
                 @OptIn(UnstableApi::class)
                 override fun onResponse(call: Call<EpisodeDetailsResponse>, response: Response<EpisodeDetailsResponse>) {

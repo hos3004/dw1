@@ -16,14 +16,12 @@ import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.MediaSource
 import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.PlayerView
-import com.example.daawahtv.EpisodeItem
 import com.example.daawahtv.network.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.daawahtv.network.ApiClient
 import com.example.daawahtv.network.TvShowApiService
-import com.example.daawahtv.model.EpisodeItem
+import com.example.daawahtv.network.EpisodeItem
 
 @UnstableApi
 class PlaybackActivity : Activity() {

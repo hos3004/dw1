@@ -36,8 +36,7 @@ class NetworkRepository @Inject constructor(
     }
 
     // ✅ جلب الحلقات المرتبطة ببرنامج معيّن (حسب البرنامج وليس الموسم)
-    suspend fun getEpisodesByProgram(programId: Long): List<EpisodeItem> = withContext(Dispatchers.IO) {
-        apiService.getEpisodesByProgram(programId).execute().body()
-            ?: emptyList()
+    suspend fun getEpisodesByProgram(programId: Long): Response<List<EpisodeItem>> = withContext(Dispatchers.IO) {
+        apiService.getEpisodesByProgram(programId)
     }
 }

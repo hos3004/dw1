@@ -20,8 +20,7 @@ import com.example.daawahtv.network.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import com.example.daawahtv.network.TvShowApiService
-import com.example.daawahtv.network.EpisodeItem
+import com.example.daawahtv.network.EpisodeDetailsResponse
 
 @UnstableApi
 class PlaybackActivity : Activity() {
@@ -112,10 +111,13 @@ class PlaybackActivity : Activity() {
 
         Toast.makeText(this, "تشغيل الحلقة التالية...", Toast.LENGTH_SHORT).show()
 
-        ApiClient.tvShowApiService.getEpisodeDetails(nextId.toInt())
-            .enqueue(object : Callback<EpisodeItem> {
-                override fun onResponse(call: Call<EpisodeItem>, response: Response<EpisodeItem>) {
-                    val episode = response.body()
+        ApiClient.getTvShowApiService().getEpisodeDetails(nextId.toInt())
+            .enqueue(object : Callback<EpisodeDetailsResponse> {
+                override fun onResponse(
+                    call: Call<EpisodeDetailsResponse>,
+                    response: Response<EpisodeDetailsResponse>
+                ) {
+                    val episode = response.body()?.data
                     var url = episode?.url_link
                     if (url.isNullOrEmpty()) {
                         url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
@@ -136,7 +138,7 @@ class PlaybackActivity : Activity() {
                     }
                 }
 
-                override fun onFailure(call: Call<EpisodeItem>, t: Throwable) {
+                override fun onFailure(call: Call<EpisodeDetailsResponse>, t: Throwable) {
                     Toast.makeText(this@PlaybackActivity, "فشل تحميل الحلقة التالية", Toast.LENGTH_SHORT).show()
                     finish()
                 }
